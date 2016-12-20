@@ -4,13 +4,43 @@
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
+<style>
+    .fieldError {
+        background-color: darksalmon;
+    }
+</style>
 <body>
 
-<p>th:text sample</p>
+<p>エラーのthymeleafテスト</p>
+<p>リストタグでだす</p>
 
-<p>getterがある場合はエラーにならない、getterが無いとエラー</p>
+<h2>th:object</h2>
+<form method="post" action="/test03" th:object="${a}">
+    <input type="text"
+           th:field="*{b.c.value}"
+           th:errorclass="fieldError" />
 
-<p th:text="${a.b.c.value}"></p>
+    <ul th:if="${#fields.hasErrors('b.c.value')}">
+        <li th:each="err : ${#fields.errors('b.c.value')}" th:text="${err}" />
+    </ul>
+
+    <input type="submit" value="click" />
+</form>
+
+
+<h2>NOT th:object</h2>
+<form method="post" action="/test03">
+    <input type="text"
+           th:field="${a.b.c.value}"
+           th:errorclass="fieldError" />
+
+    <ul th:if="${#fields.hasErrors('a.b.c.value')}">
+        <li th:each="err : ${#fields.errors('a.b.c.value')}" th:text="${err}" />
+    </ul>
+
+    <input type="submit" value="click" />
+</form>
+
 
 </body>
 </html>

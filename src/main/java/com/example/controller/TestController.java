@@ -34,7 +34,8 @@ public class TestController {
         return "test03";
     }
     @PostMapping(value = "/test03")
-    String postTest03HasGetter(@ModelAttribute A a, Model model) {
+    String postTest03HasGetter(@ModelAttribute @Validated A a, BindingResult bindingResult,
+                               Model model) {
         return "test03";
     }
 

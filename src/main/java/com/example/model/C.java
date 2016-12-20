@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class C {
 
-    @Size(min = 2)
+    @Size(min = 4)
     @Pattern(regexp = "abcd")
     private String value = "c";
 
