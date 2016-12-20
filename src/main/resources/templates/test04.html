@@ -1,17 +1,37 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
+<style>
+    .fieldError {
+        background-color: darksalmon;
+    }
+</style>
 <body>
 
-<p>th:value sample</p>
+<p>エラーのthymeleafテスト</p>
+<p><a href="http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#all-errors" target="_blank">8.2 All errors</a></p>
 
-<p>getterがある場合はエラーにならない、getterが無いとエラー</p>
 
-<input type="text" th:value="${a.b.c.value}" />
+<h2>th:object</h2>
+<form method="post" action="/test04" th:object="${a}">
+
+    <ul th:if="${#fields.hasErrors('*')}">
+        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+    </ul>
+
+    <input type="text"
+           th:field="*{b.c.value}"
+           th:errorclass="fieldError" />
+
+    <input type="text"
+           th:field="*{b.c.value2}"
+           th:errorclass="fieldError" />
+
+    <input type="submit" value="click" />
+</form>
 
 </body>
 </html>

@@ -12,14 +12,19 @@
 <body>
 
 <p>エラーのthymeleafテスト</p>
-<p><a href="http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#all-errors" target="_blank">8.2 All errors</a></p>
+<p>フィールド名も表示する</p>
+<p>
+    <a href="http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#rich-error-objects" target="_blank">8.5 Rich error objects</a>
+</p>
 
 
 <h2>th:object</h2>
-<form method="post" action="/test04" th:object="${a}">
+<form method="post" action="/test05" th:object="${a}">
 
-    <ul th:if="${#fields.hasErrors('*')}">
-        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+    <ul>
+        <li th:each="e : ${#fields.detailedErrors()}" th:class="${e.global}? globalerr : fielderr">
+            <span th:text="${e.global}? '*' : ${e.fieldName}">The field name</span> | <span th:text="${e.message}">The error message</span>
+        </li>
     </ul>
 
     <input type="text"

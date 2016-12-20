@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class TestController {
 
 
-    // th:object example
     @GetMapping(value = "/test02")
     String getTest02(@ModelAttribute A a, Model model) {
         model.addAttribute("a", new A());
@@ -27,29 +26,41 @@ public class TestController {
 
 
 
-    // th:text example
     @GetMapping(value = "/test03")
-    String getTest03HasGetter(@ModelAttribute A a, Model model) {
+    String getTest03(@ModelAttribute A a, Model model) {
         model.addAttribute("a", new A());
         return "test03";
     }
     @PostMapping(value = "/test03")
-    String postTest03HasGetter(@ModelAttribute @Validated A a, BindingResult bindingResult,
-                               Model model) {
+    String postTest03(@ModelAttribute @Validated A a, BindingResult bindingResult,
+                      Model model) {
         return "test03";
     }
 
 
 
-    // th:value example
     @GetMapping(value = "/test04")
-    String getTest04HasGetter(@ModelAttribute A a, Model model) {
+    String getTest04(@ModelAttribute A a, Model model) {
         model.addAttribute("a", new A());
         return "test04";
     }
     @PostMapping(value = "/test04")
-    String postTest04HasGetter(@ModelAttribute A a, Model model) {
+    String postTest04(@ModelAttribute @Validated A a, BindingResult bindingResult,
+                      Model model) {
         return "test04";
+    }
+
+
+
+    @GetMapping(value = "/test05")
+    String getTest05(@ModelAttribute A a, Model model) {
+        model.addAttribute("a", new A());
+        return "test05";
+    }
+    @PostMapping(value = "/test05")
+    String postTest05(@ModelAttribute @Validated A a, BindingResult bindingResult,
+                      Model model) {
+        return "test05";
     }
 
 
