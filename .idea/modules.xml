@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors.iml" filepath="$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors_main.iml" group="hello_thymeleaf_errors" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hello_thymeleaf_errors_test.iml" group="hello_thymeleaf_errors" />
+    </modules>
+  </component>
+</project>

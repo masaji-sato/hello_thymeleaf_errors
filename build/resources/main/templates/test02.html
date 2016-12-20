@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<style>
+.fieldError {
+    background-color: darksalmon;
+}
+</style>
+<body>
+
+<p>th:object sample</p>
+
+<p>th:objectを使うと、getterが無くてもアクセス可能、getterがあればもちろんアクセス可能。</p>
+
+<form method="post" action="/test02" th:object="${a}">
+    <input type="text" th:field="*{b.c.value}" th:class="${#fields.hasErrors('b.c.value')}? fieldError"/>
+    <input type="submit" value="click" />
+</form>
+
+</body>
+</html>
