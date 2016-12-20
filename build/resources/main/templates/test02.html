@@ -11,14 +11,37 @@
 </style>
 <body>
 
-<p>th:object sample</p>
+<p>エラーのthymeleafテスト</p>
 
-<p>th:objectを使うと、getterが無くてもアクセス可能、getterがあればもちろんアクセス可能。</p>
-
+<h2>th:object</h2>
 <form method="post" action="/test02" th:object="${a}">
-    <input type="text" th:field="*{b.c.value}" th:class="${#fields.hasErrors('b.c.value')}? fieldError"/>
+    <input type="text"
+           th:field="*{b.c.value}"
+           th:class="${#fields.hasErrors('b.c.value')}? fieldError" />
+
+    <div th:if="${#fields.hasErrors('b.c.value')}">
+        <p>pタグ内でエラーをリストアップ<br />※スタイルが当てづらい</p>
+        <p th:errors="*{b.c.value}">Incorrect date</p>
+    </div>
+
     <input type="submit" value="click" />
 </form>
+
+
+<h2>NOT th:object</h2>
+<form method="post" action="/test02">
+    <input type="text"
+           th:field="${a.b.c.value}"
+           th:class="${#fields.hasErrors('a.b.c.value')}? fieldError" />
+
+    <div th:if="${#fields.hasErrors('a.b.c.value')}">
+        <p>pタグ内でエラーをリストアップ<br />※スタイルが当てづらい</p>
+        <p th:errors="*{a.b.c.value}">Incorrect date</p>
+    </div>
+
+    <input type="submit" value="click" />
+</form>
+
 
 </body>
 </html>
